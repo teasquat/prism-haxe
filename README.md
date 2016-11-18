@@ -4,12 +4,13 @@ A Crystal library for serving Haxe-based Phaser games.
 
 ---
 
-Example serving with Kemal:
+> 2016-11-18 17:40:06 +0100 200 GET /style/main.css 88.0µs
+> 2016-11-18 17:40:06 +0100 200 GET /lib/phaser.js 1.27ms
+> 2016-11-18 17:40:06 +0100 200 GET /script/game.js 91.0µs
+> 2016-11-18 17:40:06 +0100 404 GET /favicon.ico 73.1µs
 
-> TODO: note Haxe speeds and stuff
 
 ## Installation
-
 
 Add this to your application's `shard.yml`:
 
