@@ -1,48 +1,18 @@
-var SimpleGame = (function () {
-    function SimpleGame() {
-        this.jump_timer = 0;
-        this.game = new Phaser.Game(800, 600, Phaser.AUTO, 'content', {
-            preload: this.preload,
-            create: this.create,
-            update: this.update,
-            render: this.render
-        });
-    }
-    SimpleGame.prototype.preload = function () {
-        this.game.load.image("dude", "../../assets/dude.png");
-        this.game.load.image("background", "../../assets/background.png");
-    };
-    SimpleGame.prototype.create = function () {
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.bg = this.game.add.tileSprite(0, 0, 800, 600, "background");
-        this.game.physics.arcade.gravity.y = 300;
-        this.player = this.game.add.sprite(32, 320, "dude");
-        this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
-        this.player.body.collideWorldBounds = true;
-        this.player.body.gravity.y = 1000;
-        this.player.body.maxVelocity.y = 500;
-        this.player.body.setSize(20, 32, 5, 16);
-        this.cursors = this.game.input.keyboard.createCursorKeys();
-        this.jump_button = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    };
-    SimpleGame.prototype.update = function () {
-        this.player.body.velocity.x = 0;
-        if (this.cursors.left.isDown) {
-            this.player.body.velocity.x = -150;
-        }
-        else if (this.cursors.right.isDown) {
-            this.player.body.velocity.x = 150;
-        }
-        if (this.jump_button.isDown && this.player.body.onFloor()) {
-            this.player.body.velocity.y = -500;
-            this.jump_timer = this.game.time.now + 750;
-        }
-    };
-    SimpleGame.prototype.render = function () {
-        this.game.debug.bodyInfo(this.player, 16, 24);
-    };
-    return SimpleGame;
-}());
-window.onload = function () {
-    var game = new SimpleGame();
+(function (console) { "use strict";
+var RenderText = function() {
+	this.game = new Phaser.Game(800,600,Phaser.CANVAS,"phaser-example",{ create : $bind(this,this.create)});
 };
+RenderText.main = function() {
+	new RenderText();
+};
+RenderText.prototype = {
+	create: function() {
+		var text = "Haxe + Phaser\nAwesome!";
+		var style = { font : "65px Arial", fill : "#ff0044", align : "center"};
+		var t = this.game.add.text(this.game.world.centerX - 300,0,text,style);
+	}
+};
+var $_, $fid = 0;
+function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; }
+RenderText.main();
+})(typeof console != "undefined" ? console : {log:function(){}});

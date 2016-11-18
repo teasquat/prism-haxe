@@ -25,5 +25,10 @@ module Prism
     File.read load_asset(env.params.url["path"])
   end
 
+  # load assets
+  get "/lib/:path" do |env|
+    File.read load_lib(env.params.url["path"])
+  end
+
   Kemal.run
 end

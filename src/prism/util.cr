@@ -6,6 +6,10 @@ def load_script(path)
   "static/js/#{path}"
 end
 
+def load_lib(path)
+  "static/js/lib/#{path}"
+end
+
 def load_asset(path)
   "static/assets/#{path}"
 end

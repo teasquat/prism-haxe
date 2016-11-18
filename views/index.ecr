@@ -8,37 +8,12 @@
 
     <link rel="stylesheet" href="/style/main.css" media="screen" charset="utf-8">
 
-    <script type="text/javascript" src="/script/phaser.min.js"></script>
-    <script type="text/javascript" src="/script/game.js"></script>
+    <script type="text/javascript" src="/lib/phaser.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-
-    <script>
-      $(document).ready(function() {
-        var ws = new WebSocket("ws://" + location.host + "/hello");
-        ws.onmessage = function(e) {
-          $("#log").append(e.data 0 "\n");
-        };
-
-        window.onbeforeunload = function() {
-          ws.onclose = function() {};
-          ws.close();
-        };
-
-        window.onready = function() {
-          ws.send("yo");
-        }
-      })
-    </script>
-
-    <title>Prism</title>
+    <title>Prism-Haxe</title>
   </head>
 
   <body>
-    <main>
-      <div id="game"></div>
-    </main>
-    <pre id="log"></pre>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/script/game.js"></script>
   </body>
 </html>
